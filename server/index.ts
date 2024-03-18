@@ -1,3 +1,4 @@
+// Your server-side code
 import express, { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 import bodyParser from "body-parser";
@@ -27,24 +28,25 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 5,
+  },
+});
 
 app.post(
   "/submit-data",
-  upload.single("document"),
+  upload.single("document"), // Use single() since it's a single file upload
   async (req: Request, res: Response) => {
     try {
-      const {
-        email,
-        password,
-        firstName,
-        lastName,
-        username,
-        nationality,
-        document,
-      } = req.body;
+      const { email, password, firstName, lastName, username, nationality } =
+        req.body;
 
-      console.log("files: ", req.files);
+      const documentFile = req.file; // Access uploaded file through req.file
+
+      console.log("document file: ", documentFile);
+
       const user = await prisma.user.create({
         data: {
           email,
@@ -53,7 +55,7 @@ app.post(
           lastname: lastName,
           username,
           nationality,
-          document: req.file?.filename,
+          document: documentFile ? documentFile.filename : null,
         },
       });
 

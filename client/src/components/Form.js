@@ -13,7 +13,7 @@ function Form() {
     lastName: "",
     username: "",
     nationality: "",
-    other: "",
+    document: null, // Initialize document as null
   });
 
   const FormTitles = ["Sign Up", "Personal Info", "Other"];
@@ -28,34 +28,39 @@ function Form() {
     }
   };
 
-
   const handleSubmit = async () => {
     try {
       const formDataToSend = new FormData();
       for (const key in formData) {
-        formDataToSend.append(key, formData[key]);
+        if (key === "document") {
+          formDataToSend.append("document", formData.document.file);
+        } else {
+          formDataToSend.append(key, formData[key]);
+        }
       }
-      const response = await fetch('http://localhost:8080/submit-data', {
-        method: 'POST',
+      const response = await fetch("http://localhost:8080/submit-data", {
+        method: "POST",
         body: formDataToSend,
       });
 
       if (!response.ok) {
-        throw new Error('Failed to submit data');
+        throw new Error("Failed to submit data");
       }
 
-      console.log('Data submitted successfully');
+      console.log("Data submitted successfully");
     } catch (error) {
-      console.error('Error submitting data:', error);
+      console.error("Error submitting data:", error);
     }
   };
-
 
   return (
     <div className="form">
       <div className="progressbar">
         <div
-          style={{ width: page === 0 ? "33.3%" : page == 1 ? "66.6%" : "100%" }}
+          style={{
+            width:
+              page === 0 ? "33.3%" : page === 1 ? "66.6%" : "100%",
+          }}
         ></div>
       </div>
       <div className="form-container">
@@ -65,7 +70,7 @@ function Form() {
         <div className="body">{PageDisplay()}</div>
         <div className="footer">
           <button
-            disabled={page == 0}
+            disabled={page === 0}
             onClick={() => {
               setPage((currPage) => currPage - 1);
             }}
@@ -75,7 +80,7 @@ function Form() {
           <button
             onClick={() => {
               if (page === FormTitles.length - 1) {
-                handleSubmit()
+                handleSubmit();
               } else {
                 setPage((currPage) => currPage + 1);
               }
