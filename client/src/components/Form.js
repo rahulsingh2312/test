@@ -28,6 +28,29 @@ function Form() {
     }
   };
 
+
+  const handleSubmit = async () => {
+    try {
+      const formDataToSend = new FormData();
+      for (const key in formData) {
+        formDataToSend.append(key, formData[key]);
+      }
+      const response = await fetch('http://localhost:8080/submit-data', {
+        method: 'POST',
+        body: formDataToSend,
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit data');
+      }
+
+      console.log('Data submitted successfully');
+    } catch (error) {
+      console.error('Error submitting data:', error);
+    }
+  };
+
+
   return (
     <div className="form">
       <div className="progressbar">
@@ -52,8 +75,7 @@ function Form() {
           <button
             onClick={() => {
               if (page === FormTitles.length - 1) {
-                alert("FORM SUBMITTED");
-                console.log(formData);
+                handleSubmit()
               } else {
                 setPage((currPage) => currPage + 1);
               }

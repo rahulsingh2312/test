@@ -26,7 +26,8 @@ function OtherInfo({ formData, setFormData }) {
       />
       <input
         type="file"
-        accept=".pdf,.doc,.docx"
+        accept=".pdf,.doc,.docx,.png,"
+        name="document"
         onChange={handleFileChange}
       />
     </div>
