@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+/* App.css */
+
+.progress-container {
+  margin: 25px auto;
+  width: 80%;
+}
+
+.progress-bar {
+  background-color: #ddd;
+  border-radius: 20px; 
+  overflow: hidden;
+  height: 10px; 
+}
+
+.progress-fill {
+  background-color: #09407A;
+  height: 100%;
+  transition: width 0.3s ease-in-out;
+}
+
+.progress-label {
+  margin-top: 5px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Example style for input fields */
+input[type="text"] {
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
