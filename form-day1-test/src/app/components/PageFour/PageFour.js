@@ -1,5 +1,4 @@
 import React from "react";
-import tick from "./tick.jpg";
 
 const PageFour = () => {
     return (
@@ -8,13 +7,13 @@ const PageFour = () => {
         style={{ maxWidth: "30%", maxHeight:'30%' }}
       >
         <img
-          src={tick}
-          className="h3 w3"
+          src="/tick.jpg"
+          className="h3 w3 ml-64 mb-10 flex justify-center items-center" 
           title="success icon"
           alt="tick-icon"
         />
         <div className="center"><h3 className="">Congratulations, </h3></div>
-        <p className="text-black">
+        <p className="text-black mb-10">
           You have completed the onboarding, you can start using our app
         </p>
         <input

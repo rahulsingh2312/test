@@ -81,7 +81,7 @@ const PageThree = ({ onButtonClick }) => {
   };
 
   return (
-    <main className="pt5 text-white ">
+    <main className="pt5  ">
       <h2>Upload an Image</h2>
       <p style={{ color: "#C0C0C0" }}>
         Choose an image to upload.
@@ -105,7 +105,7 @@ const PageThree = ({ onButtonClick }) => {
         />
       </div>
       <input
-        className="f6 grow br2 ph3 pv2 mb2 dib white submitButton"
+        className="f6 grow br2 mt-10 ph3 pv2 mb2 dib white submitButton"
         style={{
           borderStyle: "none",
           width: "66%",

@@ -36,7 +36,7 @@ const PageOne = ({ onButtonClick }) => {
         <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
           <div className="mt3">
             <label
-              className="db text-white lh-copy f6 mb1"
+              className="db  lh-copy f6 mb1"
               htmlFor="full-name"
               style={{ textAlign: "left" }}
             >
@@ -59,7 +59,7 @@ const PageOne = ({ onButtonClick }) => {
           </div>
           <div className="mv3">
             <label
-              className="db text-white lh-copy f6 mb1"
+              className="db  lh-copy f6 mb1"
               htmlFor="display-name"
               style={{ textAlign: "left" }}
             >

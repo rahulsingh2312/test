@@ -37,8 +37,9 @@ function App() {
 
   return (
     <div className="App">
-      <Logo />
+      
       <MultiStepProgressBar page={page} onPageNumberClick={nextPageNumber} />
+      <Logo />
       {
         {
           pageone: <PageOne onButtonClick={nextPage} />,
